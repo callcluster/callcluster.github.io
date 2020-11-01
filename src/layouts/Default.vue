@@ -1,15 +1,18 @@
 <template>
-  <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <!--<nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>-->
+  <div>
+    <header class="hero  is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-1">Callcluster</h1>
+          <h2 class="subtitle">Tool for callgraph <strong>extraction</strong>, <strong>analysis</strong> and <strong>visualization</strong></h2>
+        </div>
+      </div>
     </header>
-    <slot/>
+    <div class="section">
+      <div class="container">
+        <slot />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,9 +26,10 @@ query {
 
 <style>
 body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  margin:0;
-  padding:0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   line-height: 1.5;
 }
 
