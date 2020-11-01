@@ -6,5 +6,24 @@
 
 module.exports = {
   siteName: 'Callcluster',
-  plugins: []
+  transformers: {
+    remark: {
+      externalLinksTarget: '_blank',
+      externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
+      anchorClassName: 'icon icon-link',
+      plugins: [
+        // ...global plugins
+      ]
+    }
+  },
+  plugins: [
+    {
+      use: '@gridsome/vue-remark',
+      options: {
+        typeName: 'Text', // Required
+        baseDir: './text', // Where .md files are located
+        template: './src/templates/Text.vue' // Optional
+      }
+    }
+  ]
 }
