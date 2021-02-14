@@ -1,6 +1,6 @@
 # Extracción del callgraph de programas C#
 
-## Instrucciones
+## Instalación y ejecución
 Se requiere tener la herramienta de línea de comando (CLI) `dotnet` instalada. 
 
 1. Clonar el repositorio que tiene el código de callcluster-dotnet: 
