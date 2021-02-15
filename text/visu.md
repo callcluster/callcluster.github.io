@@ -2,6 +2,7 @@
 
 ## Requisitos
 El usuario debe tener instalados en su sistema:
+
 1. nodejs
 2. yarn
 3. python 3
@@ -23,7 +24,7 @@ python3 -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
 ```
-4. Iniciar el visualizador
+4. Iniciar el visualizador. Si las dependencias python se instalaron en un ambiente virtual, entonces debe activarse el mismo antes de correr el comando a continuación.
 ```bash
 yarn run quasar dev -m electron
 ```
@@ -49,6 +50,19 @@ Un clustering es también una comunidad, ya que es una agrupación disjunta de f
 
 ### Visualización
 Callcluster permite crear 6 tipos de visualizaciones, que se encuentran explicadas en la interfaz, junto con los parámetros que reciben.
+
+## Descripción general de la interfaz
+![Referencias interfaz](/referencias_interfaz.png)
+1. **Pestaña "Communities":** muestra una lista de comunidades que incluye la importada, las extraídas y los clusterings.
+2. **Pestaña "Visualizations":** muestra un listado de las visualizaciones creadas, permitiendo editarlas y eliminarlas.
+3. **Ventana "Inspection":** muestra toda la información disponible sobre la comunidad seleccionada en la visualización (6)
+4. **Título del gráfico:** Es un título generado automáticamente que describe el contenido del gráfico
+5. **Menú general:** Permite acceder a las siguientes opciones:
+  - Importar archivo analysis.json (_File_ -> _Import analysis.json_)
+  - Crear visualización (_Create_ -> _Visualization_)
+  - Crear clustering (_Create_ -> _Clustering_)
+6. **Barra de navegación:** Muestra en qué lugar de la jerarquía de comunidades se ubica la visualización actual. Al hacer click en una comunidad previa se puede navegar a la misma.
+7. **Visualización:** En este sector se muestra la visualización.
 
 ## Uso del visualizador
 
