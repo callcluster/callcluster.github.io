@@ -66,18 +66,18 @@ Callcluster permite crear 6 tipos de visualizaciones, que se encuentran explicad
 
 ## Uso del visualizador
 
-### Agregar una comunidad
+### Cómo agregar una comunidad
 Existen 3 formas de agregar comunidades:
 - Importar un archivo analysis.json (requisito para todo lo demás)
 - Extraer una sub-comunidad
 - Crear un clustering
 
-### Importar analysis.json
+### Cómo importar analysis.json
 1. Hacer click en File -> Import analysis.json (en el menú superior izquierdo), o presionar Ctrl+I
 2. Elegir el archivo `analysis.json` generado a partir de `callcluster-dotnet` ó `callcluster-clang`
 3. En la barra lateral se verá la primera comunidad: `Mined community`. Esta comunidad contiene todas las comunidades descriptas en `analysis.json`.
 
-### Crear una visualización
+### Cómo crear una visualización
 Antes de crear una visualización, debe importarse `analysis.json`. Según la visualización que será creada, puede ser recomendable crear un _clustering_ previamente.
 
 #### Pasos a seguir
@@ -85,16 +85,44 @@ Antes de crear una visualización, debe importarse `analysis.json`. Según la vi
 2. Seguir paso a paso el asistente
 3. En la barra lateral, pestaña _Visualizations_ se listan las visualizaciones creadas y se permite editarlas o eliminarlas.
 
-### Extraer una sub-comunidad
+### Cómo extraer una sub-comunidad
 Las visualizaciones _Hierarchical Graph_, _Hierarchical Colored Graph_ y _Diff Graph_ permiten hacer click derecho sobre una comunidad para extraerla a la barra lateral. También se puede hacer click derecho sobre el espacio blanco en un gráfico para extraer la comunidad que se está viendo actualmente. Por ejemplo, en la captura de pantalla a continuación, hacer click derecho sobre la parte blanca extrae la comunidad "Program", que es la última listada en la barra superior.
 
 ![screenshot visu](/screenshot_visu.png)
 
-### Crear un clustering
+### Cómo crear un clustering
 1. Hacer click en Create -> Clustering (en el menú superior izquierdo), o presionar Ctrl+Q
 2. Completar el formulario.
 3. El clustring se lista en la barra lateral, junto con todas las comunidades.
 
 Nótese que es posible crear un clustering a partir de una sub-comunidad de la comunidad minada extraída de `analysis.json`. Esto permite restringir el análisis a una parte del código fuente (por ejemplo, una clase; o un namespace).
 
-### Interactuar con las visualizaciones
+### Cómo interactuar con las visualizaciones
+|Tipo de visualización                            |Treemap|Treemap coloreado|Histograma|Grafo jerárquico|Grafo jerárquico coloreado|Grafo diff|
+|-------------------------------------------------|-------|-----------------|----------|-------|-------|-------|
+|Seleccionar (**click izquierdo**)                | **sí**| **sí**          | no       | **sí**| **sí**| **sí**|
+|Navegar (**doble click**)                        | **sí**| **sí**          | no       | **sí**| **sí**| **sí**|
+|Explotar (**Menú contextual** ó **Ctrl + Click**)| no    | no              | no       | **sí**| **sí**| **sí**|
+|Listar contenido (**Menú contextual**)           | no    | no              | no       | **sí**| **sí**| **sí**|
+|Extraer (**Menú contextual**)                    | no    | no              | no       | **sí**| **sí**| **sí**|
+
+#### Acción _seleccionar_ (**click izquierdo**)
+Al hacer click izquierdo sobre una comunidad o función, se abre una ventana flotante con toda la información disponible sobre ese elemento. Si la ventana ya existe, sus datos pasan a ser los de la última comunidad o función seleccionada.
+
+![screenshot inspection 1](/inspection_treemap.png)
+
+![screenshot inspection 2](/inspection_hierarchical.png)
+
+#### Acción _navegar_ (**doble click**)
+Hace que la visualización muestre la comunidad hacia la cual se navegó, modificando la ubicación reflejada en la **Barra de navegación**.
+
+#### Acción _explotar_ (**Ctrl + Click izquierdo** ó a través del menú contextual)
+La acción explotar abre la comunidad elegida, de forma que sus componentes pasan a ser parte del grafo. De esta manera se puede ver su contenido y cómo está relacionado con el resto del callgraph.
+
+#### Acción _extraer_ (se accede a través del **Menú contextual**)
+Esta acción puede llevarse a cabo sobre una sub-comunidad (al hacer click derecho sobre una de los comunidades que se visualizan) o sobre la comunidad raíz actual (al hacer click derecho sobre el espacio vacío del gráfico). Al realizarla, se abre una ventana con un formulario y la comunidad se agrega a la barra lateral. De esta forma pueden realizarse análisis que tengan en cuenta únicamente a esa comunidad.
+
+#### Acción _listar contenido_ (se accede a través del **Menú contextual**)
+Esta acción puede llevarse a cabo sobre una sub-comunidad (al hacer click derecho sobre una de los comunidades que se visualizan) o sobre la comunidad raíz actual (al hacer click derecho sobre el espacio vacío del gráfico). Al realizarla, se exponen diversos datos sobre la composición de esa comunidad.
+
+![Listed contents](/listed_contents.png)
