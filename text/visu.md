@@ -3,8 +3,8 @@
 ## Requisitos
 El usuario debe tener instalados en su sistema:
 
-1. nodejs
-2. yarn
+1. [nodejs y npm](https://nodejs.org/)
+2. [yarn](https://yarnpkg.com)
 3. python 3
 4. pip
 
