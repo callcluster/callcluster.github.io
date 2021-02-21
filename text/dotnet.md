@@ -1,7 +1,7 @@
 # Extracción del callgraph de programas C#
 
 ## Instalación y ejecución
-Se requiere contar con [.Net Core SDK](https://docs.microsoft.com/en-us/dotnet/core/install/windows?tabs=net50) instalado. 
+Se requiere contar con [.Net 5.0 SDK](https://docs.microsoft.com/en-us/dotnet/core/install/windows?tabs=net50) instalado. 
 
 1. Clonar el repositorio que tiene el código de callcluster-dotnet: 
 ```bash
