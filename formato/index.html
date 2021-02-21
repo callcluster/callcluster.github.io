@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Especificación del formato de callgraphs para callcluster `analysis.json` - Callcluster</title><meta name="gridsome:hash" content="029bf1126078da91eb7d6a7759f39b00c2733bbf"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.21"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="152x152" href="/assets/static/favicon.62d22cb.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/static/favicon.1539b60.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/static/favicon.dc0cdc5.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/static/favicon.7b22250.9bb7ffafafc09ac851d81afb65b8ef59.png"><link rel="preload" href="/assets/css/3.styles.a066c1ff.css" as="style"><link rel="preload" href="/assets/js/app.5b11bb7c.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--text-vue.2a4c02ef.js" as="script"><link rel="preload" href="/assets/js/vue-remark--text--formato-md.05ca3ea5.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules--gridsome--app--pages--404-vue.e7488909.js"><link rel="prefetch" href="/assets/js/vue-remark--text--clang-md.5302e84e.js"><link rel="prefetch" href="/assets/js/vue-remark--text--dotnet-md.3e7f2162.js"><link rel="prefetch" href="/assets/js/vue-remark--text--index-md.a15a6f7a.js"><link rel="prefetch" href="/assets/js/vue-remark--text--visu-md.34b07cfd.js"><link rel="stylesheet" href="/assets/css/3.styles.a066c1ff.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div data-server-rendered="true" id="app"><header class="hero  is-primary"><div class="hero-body"><div class="container"><h1 class="title is-1">Callcluster</h1><h2 class="subtitle">Tool for callgraph <strong>extraction</strong>, <strong>analysis</strong> and <strong>visualization</strong></h2></div></div></header><div class="section"><div class="container"><div class="content"><h1 id="especificación-del-formato-de-callgraphs-para-callcluster-analysisjson"><a href="#especificaci%C3%B3n-del-formato-de-callgraphs-para-callcluster-analysisjson" aria-hidden="true"><span class="icon icon-link"></span></a>Especificación del formato de callgraphs para callcluster <code>analysis.json</code></h1><p>Este permite expresar 3 datos extraídos del análisis de un programa, a saber:</p><ul><li>callgraph (llamadas entre funciones)</li><li>funciones: metadatos y métricas sobre las funciones que componen el programa</li><li>estructura jerárquica del programa</li></ul><p>Los campos marcados con <code>(*)</code> son opcionales: <code>callcluster-visu</code> los interpreta, pero no requiere su existencia.</p><h2 id="archivo-emitido-por-los-extractores"><a href="#archivo-emitido-por-los-extractores" aria-hidden="true"><span class="icon icon-link"></span></a>Archivo emitido por los extractores</h2><p>El archivo permite agregar métricas arbitrarias a las funciones, como campos en los diccionarios contenidos en el array de funciones.</p><pre><code class="language-json">{
+    &quot;calls&quot;:[
+        {
+            &quot;from&quot;:&lt;indice en el array 'functions' (entero)&gt;,
+            &quot;to&quot;:&lt;indice en el array 'functions' (entero)&gt;,
+        }
+    ],
+    &quot;functions&quot;:[
+        {
+            &quot;location&quot;:&lt;Cadena de caracteres que permite vincular esta función con la ubicación donde se escribió la misma, formato libre&gt;,
+            &quot;name&quot;:&lt;Nombre de la función&gt;,
+            &quot;written&quot;: &lt; (*) valor booleano, indica si esta función fue escrita por el programador o no. Es opcional &gt;,
+            &quot;&lt;nombre de la métrica&gt;&quot;:&lt;(*) valor de la métrica&gt;
+        }
+    ],
+    &quot;community&quot;:&lt;un diccionario tal como definido en la sección 'diccionario Comunidad'&gt;
+}
+</code></pre><h2 id="diccionario-comunidad"><a href="#diccionario-comunidad" aria-hidden="true"><span class="icon icon-link"></span></a>diccionario Comunidad</h2><p>Representa una comunidad, y contiene instancias de sí mismo para representar niveles inferiores</p><pre><code class="language-json">{
+    &quot;name&quot;:&lt;nombre de la comunidad&gt;,
+    &quot;functions&quot;:&lt;Array índices del array 'functions'&gt;,
+    &quot;communities&quot;:&lt;Array de diccionarios Comunidad&gt;,
+    &quot;type&quot;:&lt;(*) nombre de este tipo de &gt;
+}
+</code></pre><h2 id="extensibilidad"><a href="#extensibilidad" aria-hidden="true"><span class="icon icon-link"></span></a>Extensibilidad</h2><p>Este formato está diseñado para aceptar la adición de cualquier cantidad de métricas arbitrarias. Si bien los nombres hacen referencia al caso concreto de análisis de callgraphs, podría usarse con otros fines; o para expresar otras dependencias.</p></div></div></div></div>
+    <script>window.__INITIAL_STATE__={"data":{"text":{"title":"Especificación del formato de callgraphs para callcluster `analysis.json`"}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.5b11bb7c.js" defer></script><script src="/assets/js/page--src--templates--text-vue.2a4c02ef.js" defer></script><script src="/assets/js/vue-remark--text--formato-md.05ca3ea5.js" defer></script>
+  </body>
+</html>
