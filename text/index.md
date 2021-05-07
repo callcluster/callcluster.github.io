@@ -1,4 +1,17 @@
-# Demo
+# Qué es (tl;dr)
+
+- Extractores para C y para C#. Extraen el callgraph y algunas métricas.
+- Ambos extractores tienen el mismo formato de salida. Ese formato se puede cargar en el visualizador.
+- El visualizador permite correr un algoritmo de clustering sobre el grafo producido. (Leiden, 2019)
+- Los clusters que construye Leiden pueden inspirar un refactor
+- La visualización muestra la arquitectura del sistema sin que haga falta documentarla.
+
+# Por qué
+- Extensible. Es fácil escribir tus propios extractores. Es fácil modificar el algoritmo de clustering o cambiarlo por otro.
+- Es sencillo instalarlo y probarlo.
+- No hay nada igual que sea opensource. No hay nada igual que sea tan fácil de usar.
+
+# Demo (3 minutos)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/N4CciKXP3C0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
